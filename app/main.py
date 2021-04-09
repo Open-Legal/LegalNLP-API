@@ -30,41 +30,41 @@ def read_root():
     return {"Status": "Working"}
 
 @app.post("/act")
-def Act(req: Request):
-    return JSONResponse(content=jsonable_encoder(lexnlp.extract.en.acts.get_act_list(req.text)))
+def Act(item: Request):
+    return JSONResponse(content=jsonable_encoder(lexnlp.extract.en.acts.get_act_list(item.text)))
 
 @app.post("/amount")
-def Amount(req: Request):
-    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.amounts.get_amounts(text,True))))
+def Amount(item: Request):
+    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.amounts.get_amounts(item.text,True))))
 
 @app.post("/constraint")
-def Constraint(req: Request):
-    return JSONResponse(content=jsonable_encoder(lexnlp.extract.en.acts.get_act_list(req.text)))
+def Constraint(item: Request):
+    return JSONResponse(content=jsonable_encoder(lexnlp.extract.en.acts.get_act_list(item.text)))
 
 @app.post("/company")
-def Company(req: Request):
-    return JSONResponse(content=jsonable_encoder((list(lexnlp.extract.en.entities.nltk_re.get_entities.nltk_re.get_companies(text)))))
+def Company(item: Request):
+    return JSONResponse(content=jsonable_encoder((list(lexnlp.extract.en.entities.nltk_re.get_entities.nltk_re.get_companies(item.text)))))
 
 @app.post("/date")
-def Date(req: Request):
-    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.dates.get_dates(text))))
+def Date(item: Request):
+    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.dates.get_dates(item.text))))
 
 @app.post("/definition")
-def Definition(req: Request):
-    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.definitions.get_definitions(text,True,True))))
+def Definition(item: Request):
+    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.definitions.get_definitions(item.text,True,True))))
 
 @app.post("/duration")
-def Duration(req: Request):
-    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.durations.get_durations(text))))
+def Duration(item: Request):
+    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.durations.get_durations(item.text))))
 
 @app.post("/money")
-def Money(req: Request):
-    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.money.get_money(text,True,4))))
+def Money(item: Request):
+    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.money.get_money(item.text,True,4))))
 
 @app.post("/regulation")
-def Regulation(req: Request):
-    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.regulations.get_regulations(text,True,True))))
+def Regulation(item: Request):
+    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.regulations.get_regulations(item.text,True,True))))
 
 @app.post("/trademark")
-def Regulation(req: Request):
-    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.trademarks.get_trademarks(text))))
+def Regulation(item: Request):
+    return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.trademarks.get_trademarks(item.text))))
