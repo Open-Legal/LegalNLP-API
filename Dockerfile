@@ -1,6 +1,6 @@
 FROM python:3.7
 
-RUN pip install fastapi uvicorn lexnlp
+RUN pip install fastapi uvicorn lexnlp nltk
 
 EXPOSE 80
 

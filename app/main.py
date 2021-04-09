@@ -5,6 +5,21 @@ from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 
+import nltk
+import types
+import lexnlp.extract.en.definitions
+import lexnlp.extract.en.durations
+import lexnlp.extract.en.regulations
+import lexnlp.extract.en.conditions
+import lexnlp.extract.en.constraints
+import lexnlp.extract.en.acts
+import lexnlp.extract.en.dates
+import lexnlp.extract.en.trademarks
+import lexnlp.extract.en.percents
+import lexnlp.extract.en.money
+import lexnlp.extract.en.entities.nltk_maxent
+import lexnlp.extract.en.entities.nltk_re
+
 class Request(BaseModel):
     text: str
 
