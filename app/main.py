@@ -2,6 +2,7 @@ from typing import Optional
 from fastapi import FastAPI
 from datetime import datetime
 from fastapi.responses import JSONResponse
+from fastapi.openapi.utils import get_openapi
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 
@@ -68,3 +69,18 @@ def Regulation(item: Request):
 @app.post("/trademark")
 def Regulation(item: Request):
     return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.trademarks.get_trademarks(item.text))))
+
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    openapi_schema = get_openapi(
+        title="Open Legal - Legal NLP API",
+        version="0.0.1",
+        description="OpenAPI Schema for Legal NLP API",
+        routes=app.routes,
+    )
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
+
+
+app.openapi = custom_openapi
