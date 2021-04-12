@@ -2,10 +2,9 @@ from typing import Optional
 from fastapi import FastAPI
 from datetime import datetime
 from fastapi.responses import JSONResponse
-from fastapi.openapi.utils import get_openapi
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
-
+import uvicorn
 import nltk
 import types
 import lexnlp.extract.en.definitions
@@ -84,3 +83,7 @@ def custom_openapi():
 
 
 app.openapi = custom_openapi
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=80)
