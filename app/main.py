@@ -69,21 +69,5 @@ def Regulation(item: Request):
 def Regulation(item: Request):
     return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.trademarks.get_trademarks(item.text))))
 
-def custom_openapi():
-    if app.openapi_schema:
-        return app.openapi_schema
-    openapi_schema = get_openapi(
-        title="Open Legal - Legal NLP API",
-        version="0.0.1",
-        description="OpenAPI Schema for Legal NLP API",
-        routes=app.routes,
-    )
-    app.openapi_schema = openapi_schema
-    return app.openapi_schema
-
-
-app.openapi = custom_openapi
-
-
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=80)
