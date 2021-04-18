@@ -1,5 +1,5 @@
 from typing import Optional
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from datetime import datetime
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
@@ -19,11 +19,14 @@ import lexnlp.extract.en.percents
 import lexnlp.extract.en.money
 import lexnlp.extract.en.entities.nltk_maxent
 import lexnlp.extract.en.entities.nltk_re
+from fastapi_cloudauth.auth0 import Auth0, Auth0CurrentUser, Auth0Claims
+
 
 class Request(BaseModel):
     text: str
 
 app = FastAPI()
+auth = Auth0(domain="https://www.neuron.legal")
 
 @app.get("/")
 def read_root():
@@ -68,6 +71,10 @@ def Regulation(item: Request):
 @app.post("/trademark")
 def Regulation(item: Request):
     return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.trademarks.get_trademarks(item.text))))
+
+@app.get("/secure", dependencies=[Depends(auth.implicit_scheme)])
+def get_secure(user: Auth0User = Security(auth.get_user, scopes=['read:nlp'])):
+    return {"message": f"{user}"}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=80)
