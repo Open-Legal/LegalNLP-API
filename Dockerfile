@@ -1,6 +1,6 @@
 FROM python:3.6.8
 
-RUN pip install fastapi uvicorn lexnlp fastapi-cloudauth 
+RUN pip install nltk fastapi uvicorn lexnlp fastapi-cloudauth 
 
 EXPOSE 80
 
