@@ -1,6 +1,8 @@
 # LegalNLP-API
 
-NLP Web API for Legal Text
+Web API for extracting content from unstructured legal text.
+
+This API predominantly exposes features available in [LexNLP](https://lexpredict-lexnlp.readthedocs.io/en/latest/modules/extract/extract.html) though with plans to add in ML & other custom created extractions in the near future.
 
 ## Get Started
 You will need Docker installed on your machine and access to the internet.
