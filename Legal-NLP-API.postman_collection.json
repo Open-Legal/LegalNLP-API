@@ -1,0 +1,520 @@
+{
+	"info": {
+		"_postman_id": "e5225bf0-eecc-4d67-97d4-bf11786c03ec",
+		"name": "Legal NLP API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Amount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"Twenty-seven days until the one-hundred and one dogs arrive\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/amount",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"amount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Act",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"accordance with sections 751(a)(1) and 777(i)(1) of the Act, and 19 CFR 351\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/act",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"act"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Constraint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"This will occur at most three times.\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/constraint",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"constraint"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"This is Lexpredict LLC\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/company",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Definition",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"“and Acme, LLC ('Client')\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/definition",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"definition"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Duration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"no more than five-day period\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/duration",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"duration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Money",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"The price will be 5 million GBP.\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/money",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"money"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Regulation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"Pursuant to 123 CFR 456, Provider shall\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/regulation",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"regulation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sentences",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"The courts in this jurisdiction will enforce those commitments when it is legally possible and necessary to do so (see, most recently, R. (on the application of ClientEarth) v Secretary of State for the Environment, Food and Rural Affairs (No.2) [2017] P.T.S.R. 203 and R. (on the application of ClientEarth) v Secretary of State for Environment, Food and Rural Affairs (No.3) [2018] Env. L.R. 21). The central question in this case arises against that background.\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/sentences",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"sentences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trademark",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"tests[\"Client is authenticated\"] = postman.getResponseHeader(\"X-Authenticated-Client\") !== 'anonymous';",
+							"tests[\"API-Version header set\"] = postman.getResponseHeader(\"X-API-Version\") === 'v2';",
+							"tests[\"X-Requests-Available > 0\"] = postman.getResponseHeader(\"X-Requests-Available-Minute\") > 0;",
+							"tests[\"X-RequestCounter-Reset > 0\"] = postman.getResponseHeader(\"X-RequestCounter-Reset\") > 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "b42fb6f6d88549548880534651bc04e1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"text\": \"ACME (TM)\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1/trademark",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"trademark"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

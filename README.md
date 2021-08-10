@@ -21,6 +21,8 @@ docker run -p 80:80 openlegal/legal-nlp-api
 
 ## Documentation
 
+A Postman file is available in this repo /Legal-NLP-API.postman_collection.json
+
 Documentation is available on /docs when you run the docker image.
 
 Example is available: http://openlegal-legal-nlp-api.westeurope.azurecontainer.io/docs
