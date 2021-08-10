@@ -39,7 +39,7 @@ def Amount(item: Request):
 
 @app.post("/constraint")
 def Constraint(item: Request):
-    return JSONResponse(content=jsonable_encoder(lexnlp.extract.en.acts.get_act_list(item.text)))
+    return JSONResponse(content=jsonable_encoder(lexnlp.extract.en.constraints.get_constraints(item.text)))
 
 @app.post("/company")
 def Company(item: Request):
