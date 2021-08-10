@@ -65,6 +65,10 @@ def Money(item: Request):
 def Regulation(item: Request):
     return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.regulations.get_regulations(item.text,True,True))))
 
+@app.post("/sentences")
+def Sentences(item: Request):
+    return JSONResponse(content=jsonable_encoder(lexnlp.nlp.en.segments.sentences.get_sentence_list(item.text)))
+
 @app.post("/trademark")
 def Regulation(item: Request):
     return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.trademarks.get_trademarks(item.text))))
