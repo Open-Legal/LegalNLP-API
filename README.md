@@ -19,4 +19,8 @@ A Postman file is available in this repo /Legal-NLP-API.postman_collection.json
 
 Documentation is available on /docs when you run the docker image.
 
-Example is available: http://openlegal-legal-nlp-api.westeurope.azurecontainer.io/docs
+## Demo 
+
+The latest version is available here: http://openlegal-legal-nlp-api.westeurope.azurecontainer.io/docs
+
+*Important note - this isn't running over HTTPS and isn't your own version, do not send production content to this endpoint*
