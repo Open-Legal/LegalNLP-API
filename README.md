@@ -1,4 +1,4 @@
-# LegalNLP-API
+![Open Legal - Legal NLP API](open-legal-api.png)
 
 Web API for extracting content from unstructured legal text.
 
