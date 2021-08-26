@@ -7,6 +7,7 @@ from pydantic import BaseModel
 import uvicorn
 import nltk
 import types
+import spacy
 import lexnlp.extract.en.definitions
 import lexnlp.extract.en.durations
 import lexnlp.extract.en.regulations
@@ -22,6 +23,12 @@ import lexnlp.extract.en.money
 import lexnlp.extract.en.amounts
 import lexnlp.extract.en.entities.nltk_maxent
 import lexnlp.extract.en.entities.nltk_re
+from blackstone.pipeline.abbreviations import AbbreviationDetector
+from blackstone.utils.legislation_linker import extract_legislation_relations
+from models.Leg import Leg
+from models.NamedEntity import NamedEntity
+from models.Abrv import Abrv
+from blackstone.rules import CITATION_PATTERNS
 
 class Request(BaseModel):
     text: str
@@ -34,6 +41,16 @@ app = FastAPI()
 def read_root():
     return {"Status": "Working"}
 
+@app.post("/abbreviation")
+def Abbreviation(item: Request):
+    abbreviation = []
+
+    doc = nlp(item.text) 
+
+    for abrv in doc._.abbreviations:
+        abbreviation.append(Abrv(abrv.string, abrv.start_char, abrv.end_char, abrv._.long_form.string))
+
+    return JSONResponse(content=jsonable_encoder(abbreviation))
 
 @app.post("/act")
 def Act(item: Request):
@@ -71,11 +88,35 @@ def Definition(item: Request):
 def Duration(item: Request):
     return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.durations.get_durations(item.text))))
 
+@app.post("/legislation")
+def Legislation(item: Request):
+
+    doc = nlp(item.text) 
+    relations = extract_legislation_relations(doc)
+    
+    legislations = []
+    
+    for provision, provision_url, instrument, instrument_url in relations:
+        legislations.append(Leg(provision.text,provision_url,instrument.text,instrument_url))
+
+    return JSONResponse(content=jsonable_encoder(legislations))
+
 
 @app.post("/money")
 def Money(item: Request):
     return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.money.get_money(item.text, True, 4))))
 
+
+@app.post("/named-entity")
+def Ner(item: Request):
+
+    doc = nlp(item.text) 
+    namedEntities = []
+
+    for entity in doc.ents:
+        namedEntities.append(NamedEntity(entity.text,entity.label_))
+
+    return JSONResponse(content=jsonable_encoder(namedEntities))
 
 @app.post("/regulation")
 def Regulation(item: Request):
