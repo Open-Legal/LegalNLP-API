@@ -33,9 +33,12 @@ from blackstone.rules import CITATION_PATTERNS
 class Request(BaseModel):
     text: str
 
+nlp = spacy.load("en_blackstone_proto")
+
+abbreviation_pipe = AbbreviationDetector(nlp)
+nlp.add_pipe(abbreviation_pipe)
 
 app = FastAPI()
-
 
 @app.get("/")
 def read_root():
