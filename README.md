@@ -7,7 +7,7 @@ This API predominantly exposes features available in [LexNLP](https://lexpredict
 ## Running precompiled image
 You can also pull and run this docker image from Docker Hub:
 
-`docker pull openlegal/legalnlp-api`
+`docker pull openlegal/legal-nlp-api`
 
 followed by
 
