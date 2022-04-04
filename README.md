@@ -21,6 +21,6 @@ Documentation is available on /docs when you run the docker image.
 
 ## Demo 
 
-The latest version is available here: https://openlegal-legal-nlp-api.purplewater-6d16a940.westeurope.azurecontainerapps.io/docs
+The latest version is available here: https://legal-nlp-api.lemonsmoke-5a527c27.westeurope.azurecontainerapps.io/docs
 
 *Important note - this isn't your own version, do not send production content to this endpoint*
