@@ -2,7 +2,7 @@
 
 Web API for extracting content from unstructured legal text.
 
-This API predominantly exposes features available in [LexNLP](https://lexpredict-lexnlp.readthedocs.io/en/latest/modules/extract/extract.html) though with plans to add in ML & other custom created extractions in the near future.
+This API predominantly exposes features available in [LexNLP](https://lexpredict-lexnlp.readthedocs.io/en/latest/modules/extract/extract.html) & Blackstone NLP - along with other custom created extractions.
 
 ## Running precompiled image
 You can also pull and run this docker image from Docker Hub:
