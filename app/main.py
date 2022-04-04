@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 from fastapi import FastAPI, Depends
 from datetime import datetime
 from fastapi.responses import JSONResponse
@@ -28,7 +28,10 @@ from blackstone.utils.legislation_linker import extract_legislation_relations
 from models.Leg import Leg
 from models.NamedEntity import NamedEntity
 from models.Abrv import Abrv
+from models.FCAContent import FCAContent
 from blackstone.rules import CITATION_PATTERNS
+import regex
+from collections import OrderedDict
 
 class Request(BaseModel):
     text: str
@@ -91,6 +94,39 @@ def Definition(item: Request):
 def Duration(item: Request):
     return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.durations.get_durations(item.text))))
 
+
+@app.post("/fca")
+def FCA(item: Request):
+
+    baseUrl = "https://www.handbook.fca.org.uk/handbook/"
+
+    matches = regex.findall("[A-Z]+\s(?>Sch\s)?(?>Ann\s)?(?>TP\s)?\d+[A-Z]?(?>\.\d+)*-?\s?[A-Z]?", item.text)
+
+    # Strip whitespace from matches
+    stripped = [s.strip() for s in matches]
+
+    # Get only unique values
+    unique = list(dict.fromkeys(stripped))
+
+    items = []  # type: List[FCAContent]
+
+    for value in unique:
+
+        section = regex.findall("[A-Z]+\s(?>Sch\s)?(?>Ann\s)?(?>TP\s)?", value)[0].split()
+        sub = regex.findall("\d+[A-Z]?(?>\.\d+)*-?\s?[A-Z]?", value)[0].split('.')
+
+        url = baseUrl + section[0] + "/"
+
+        if len(section) == 2:
+            url = url + section[1] + "/"
+
+        if len(sub) != 0:
+            url = url + sub[0] + "/" + sub[0] + ".html"
+        
+        items.append(FCAContent(value, findall(item.text, value), url))
+
+    return JSONResponse(content=jsonable_encoder(items))
+
 @app.post("/legislation")
 def Legislation(item: Request):
 
@@ -135,6 +171,13 @@ def Sentences(item: Request):
 def Regulation(item: Request):
     return JSONResponse(content=jsonable_encoder(list(lexnlp.extract.en.trademarks.get_trademarks(item.text))))
 
+def findall(text, sub):
+    """Return all indices at which substring occurs in text"""
+    return [
+        index
+        for index in range(len(text) - len(sub) + 1)
+        if text[index:].startswith(sub)
+    ]
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=80)
